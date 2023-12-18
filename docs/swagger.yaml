@@ -22,6 +22,15 @@ definitions:
       type:
         type: string
     type: object
+  models.Follower:
+    properties:
+      followerID:
+        type: integer
+      id:
+        type: integer
+      userID:
+        type: integer
+    type: object
   models.Message:
     properties:
       id:
@@ -34,16 +43,98 @@ definitions:
       username:
         type: string
     type: object
+  models.Timeline:
+    properties:
+      username:
+        type: string
+    required:
+    - username
+    type: object
+  models.UsernameFollower:
+    properties:
+      followerUsername:
+        type: string
+      username:
+        type: string
+    required:
+    - followerUsername
+    - username
+    type: object
 host: localhost:8080
 info:
   contact:
     email: cornejo.francodavid@gmail.com
     name: Cornejo Franco
   description: API realizada para enviar o recibir mensajes y seguir a otros usuarios.
-  termsOfService: http://swagger.io/terms/
   title: Ejercicio UALA
   version: "1.0"
 paths:
+  /follow:
+    post:
+      consumes:
+      - application/json
+      description: Seguir a otros usuarios
+      parameters:
+      - description: Body para seguir al usuario deseado
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/models.UsernameFollower'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Follower'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+      tags:
+      - Endpoints
+  /messages:
+    get:
+      consumes:
+      - application/json
+      description: Obtener mensajes de los usuarios a los que sigue
+      parameters:
+      - description: Body para obtener mensajes de los usuarios a los que sigue
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/models.Timeline'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Follower'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+      tags:
+      - Endpoints
   /send:
     post:
       consumes:
@@ -71,4 +162,6 @@ paths:
           description: Service Unavailable
           schema:
             $ref: '#/definitions/models.ErrorMessage'
+      tags:
+      - Endpoints
 swagger: "2.0"

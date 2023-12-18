@@ -13,7 +13,7 @@ func SetupRouter(r *gin.Engine, handler handler.MicroBlogHandler) {
 	{
 		v1.POST("/send", handler.SendMessageHandler)
 		v1.POST("/follow", handler.FollowHandler)
-		v1.GET("/timeline/user", handler.TimelineHandler)
+		v1.GET("/messages", handler.TimelineHandler)
 	}
 	r.GET("/api/doc/*any", ginSwagger.WrapHandler(swaggerFiles.Handler)) // ../api/doc/index.html
 }

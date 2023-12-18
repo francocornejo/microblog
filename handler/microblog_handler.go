@@ -102,6 +102,16 @@ func (m *microBlogHandler) FollowHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, follow)
 }
 
+// @Description Obtener mensajes de los usuarios a los que sigue
+// @Tags Endpoints
+// @Accept  json
+// @Produce  json
+// @Param        Request  body      models.Timeline  true  "Body para obtener mensajes de los usuarios a los que sigue"
+// @Success 200 {object} models.Follower
+// @Failure 400 {object} models.ErrorMessage
+// @Failure 404 {object} models.ErrorMessage
+// @Failure 503 {object} models.ErrorMessage
+// @Router /messages [get]
 func (m *microBlogHandler) TimelineHandler(ctx *gin.Context) {
 	var bodyTimeline models.Timeline
 

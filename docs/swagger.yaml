@@ -1,0 +1,74 @@
+basePath: /microblog
+definitions:
+  models.Error:
+    properties:
+      field:
+        type: string
+      message:
+        type: string
+    type: object
+  models.ErrorMessage:
+    properties:
+      detail:
+        type: string
+      errors:
+        items:
+          $ref: '#/definitions/models.Error'
+        type: array
+      status:
+        type: integer
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  models.Message:
+    properties:
+      id:
+        type: integer
+      text:
+        maxLength: 250
+        type: string
+      timestamp:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: cornejo.francodavid@gmail.com
+    name: Cornejo Franco
+  description: API realizada para enviar o recibir mensajes y seguir a otros usuarios.
+  termsOfService: http://swagger.io/terms/
+  title: Ejercicio UALA
+  version: "1.0"
+paths:
+  /send:
+    post:
+      consumes:
+      - application/json
+      description: Envio de mensajes
+      parameters:
+      - description: Body para el envío de mensajes
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/models.Message'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Message'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+        "503":
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/models.ErrorMessage'
+swagger: "2.0"

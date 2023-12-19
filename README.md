@@ -86,8 +86,30 @@ go run main.go
   "username": "nombre_usuario"
   }
   ```
+### Swagger:
+- Para correr el swagger, una vez que la api este en ejecucion localmente, se debera ingresar al siguiente link (modificar el puerto segun corresponda):
+```
+ http://localhost:8080/api/doc/index.html
+```
 
-## Base de Datos:
+## Documentacion sobre la API: 
+### Tecnologías Utilizadas:
+- Golang
+- Gingonic, Gorm y Swagger
+- MySQL
+
+### Arquitectura General:
+- Arquitectura en capas.
+
+### Componentes Principales:
+- Backend desarrollado en Golang.
+- Base de datos MySQL con tres tablas: `users`, `messages`, y `followers`.
+
+### Comunicación entre Componentes:
+- Comunicación a través de HTTP.
+- Llamadas a la base de datos para acceder y modificar datos.
+
+### Base de Datos:
 - MySQL como sistema de gestión de bases de datos relacional.
 - Estructura básica de la base de datos:
   - **Tabla: users**
@@ -106,21 +128,21 @@ go run main.go
     - user_id (int, clave externa)
     - follower_id (int, clave externa)
 
-## Flujos de Trabajo:
+### Flujos de Trabajo:
 - La API cuenta con 3 endpoints: 
   - `/send` para publicar mensajes.
   - `/follow` para seguir a otros usuarios.
   - `/messages` para obtener publicaciones de los usuarios seguidos.
 
-## Seguridad:
+### Seguridad:
 - No se han implementado medidas de seguridad en este ejercicio.
 
-## Despliegue:
+### Despliegue:
 - No hay información de despliegue, ya que es un ejercicio simple.
 
-## Servicios Adicionales:
+### Servicios Adicionales:
 - No se han integrado servicios adicionales.
 
-## Detalles:
+### Detalles:
 - Este es un proyecto de ejemplo para practicar conceptos básicos de desarrollo en Golang y MySQL.
 

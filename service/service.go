@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"microblog/models"
 	"microblog/repository"
 )
@@ -43,6 +42,5 @@ func (s service) TimelineService(bodyTimeline models.Timeline) ([]models.Feed, *
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(messageFollows, err)
 	return messageFollows, nil
 }

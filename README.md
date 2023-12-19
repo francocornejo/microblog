@@ -109,7 +109,7 @@ go run main.go
 - La API cuenta con 3 endpoints: 
   - `/send` para publicar mensajes.
   - `/follow` para seguir a otros usuarios.
-  - `/timeline/user` para obtener publicaciones de los usuarios seguidos.
+  - `/messages` para obtener publicaciones de los usuarios seguidos.
 
 ## Seguridad:
 - No se han implementado medidas de seguridad en este ejercicio.
@@ -122,17 +122,4 @@ go run main.go
 
 ## Detalles:
 - Este es un proyecto de ejemplo para practicar conceptos básicos de desarrollo en Golang y MySQL.
-
-## Env
-```sh
-export GORM_DRIVER="mysql"
-export SQL_CONNECTION="root:@tcp(127.0.0.1:3306)/blogging_uala"
-export TABLE_TWEETS="tweets"
-export BD_NAME="bloggin_uala"
-export TABLE_MESSAGES="messages"
-export TABLE_FOLLOWERS="followers"
-export TABLE_USERS="users"
-```
-
-<br/>
 

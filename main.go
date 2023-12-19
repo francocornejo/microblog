@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
+
 	"microblog/api"
+	_ "microblog/docs"
 	"microblog/handler"
 	"microblog/repository"
 	"microblog/service"
-	"net/http"
-
-	_ "microblog/docs"
 
 	"github.com/gin-gonic/gin"
 )

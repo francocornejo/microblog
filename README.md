@@ -11,6 +11,7 @@ seguir a otros usuarios y ver publicaciones de los usuarios a los que siguen.
   - Cloná el repositorio en tu máquina.
 
   ### Configuracion de la base de Datos : 
+  - Nombre de la BD que se uso: blogging_uala
   - Ejecuta los siguientes comandos SQL para crear las tablas necesarias:
   ```sql
   CREATE TABLE followers (
